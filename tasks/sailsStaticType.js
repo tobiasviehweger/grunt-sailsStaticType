@@ -18,6 +18,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('sailsStaticType', 'Generate POJOs from sails models to use for intellisense', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
+	
     });
 
     // Iterate over all specified file groups.
@@ -39,7 +40,6 @@ module.exports = function(grunt) {
 		{
 			var modelName = path.basename(file, '.js');
 			var targetName = file.replace(modelName, '_' + modelName);
-			modelName = '_' + modelName;
 			
 			var content = 'var ' + modelName + ' = (function () {' +
 						  'function ' + modelName + '() {';
@@ -52,9 +52,9 @@ module.exports = function(grunt) {
 			}
 			
 			content += '}' +
-			  'return User;' +
+			  'return ' + modelName + ';' +
 			  '})();' +
-			  'module.exports = User;'
+			  'module.exports = ' + modelName + ';'
 			  
 			grunt.file.write(targetName, content);
 			grunt.log.writeln('File ' + targetName + ' created');
