@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         
 		if(model.attributes)
 		{
-			var modelName = path.basename(file, '.js')';
+			var modelName = path.basename(file, '.js');
 			var targetName = file.replace(modelName, '_' + modelName);
 			modelName = '_' + modelName;
 			
