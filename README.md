@@ -2,6 +2,20 @@
 
 > Generate POJO's from sails models to use for intellisense
 
+If you are using Visual Studio (or other IDE's with code completion), the poco's will give you strongly typed objects to work with. You can use the generated pocos like this in your sails controllers:
+
+```js
+var _User = require('../models/_User');
+
+...
+
+var user = new _User();
+user.name = 'new user';
+user.email = 'newuser@yahoo.com';
+
+User.create(user);
+```
+
 ## Getting Started
 This plugin requires Grunt `~0.4.4`
 
